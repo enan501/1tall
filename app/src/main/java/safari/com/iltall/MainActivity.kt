@@ -13,7 +13,5 @@ class MainActivity : AppCompatActivity() {
         //pull 가져옴
         //comit 내 컴터에 임시 저장
         //comit > push > pull
-
-
     }
 }
