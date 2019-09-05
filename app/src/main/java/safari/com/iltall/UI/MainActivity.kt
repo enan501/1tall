@@ -2,6 +2,7 @@ package safari.com.iltall
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import safari.com.iltall.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,5 +14,6 @@ class MainActivity : AppCompatActivity() {
         //pull 가져옴
         //comit 내 컴터에 임시 저장
         //comit > push > pull
+        //merge
     }
 }
