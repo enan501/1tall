@@ -9,8 +9,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //안녕
-        // push 원격 서버 내 코드 직접 올림, pull 가져옴
-        //응 comit 내 컴터에 임시 저장 comit > push > pull
+        // push 원격 서버 내 코드 직접 올림
+        //pull 가져옴
+        //comit 내 컴터에 임시 저장
+        //comit > push > pull
 
 
     }
