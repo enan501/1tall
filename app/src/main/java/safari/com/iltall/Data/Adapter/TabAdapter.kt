@@ -23,4 +23,13 @@ class TabAdapter(fm: FragmentManager, val num:Int): FragmentPagerAdapter(fm) {
         }
         return null
     }
+    override fun getPageTitle(position: Int): CharSequence? {
+        return when (position){
+            0 -> "피드"
+            1 -> "팔로우"
+            else -> "랭킹"
+        }
+    }
+
+
 }
