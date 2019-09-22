@@ -1,5 +1,6 @@
 package safari.com.iltall.UI
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -15,6 +16,7 @@ import com.kakao.usermgmt.callback.MeV2ResponseCallback
 import com.kakao.usermgmt.response.MeV2Response
 import com.kakao.util.exception.KakaoException
 import com.kakao.util.helper.Utility
+import kotlinx.android.synthetic.main.activity_login.*
 import safari.com.iltall.R
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -22,6 +24,10 @@ import java.security.NoSuchAlgorithmException
 class LoginActivity : AppCompatActivity() {
 
     lateinit var kakaoCallback: SessionCallback
+
+    val CID = "482@naver.com"
+    val CPASS = "1234"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +37,15 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun loginClick(view: View){
+        val id = e_text.text.toString()
+        val pass = p_text.text.toString()
 
+        if(id == CID && pass == CPASS){
+            //로그인 성공
+        }
+        else{
+            //로그인 실패
+        }
     }
 
     fun getHashKey(){
@@ -55,9 +69,7 @@ class LoginActivity : AppCompatActivity() {
     fun kakaoInit(){
         kakaoCallback = SessionCallback()
         Session.getCurrentSession().addCallback(kakaoCallback)
-        Log.d("KAKAOSESSION","SESSION")
         Session.getCurrentSession().checkAndImplicitOpen()
-        Log.d("KAKAOSESSION","SESSION")
     }
 
     //카카오 콜백함수
@@ -71,6 +83,15 @@ class LoginActivity : AppCompatActivity() {
             Log.d("KAKAOSESSION","SessionCallbackOpened")
             request()
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        if(Session.getCurrentSession().handleActivityResult(requestCode,resultCode,data)){
+            return
+        }
+
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     fun request(){
