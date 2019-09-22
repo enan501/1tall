@@ -2,8 +2,8 @@ package safari.com.iltall.UI
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Base64
 import android.util.Log
 import android.view.View
@@ -104,6 +104,7 @@ class LoginActivity : AppCompatActivity() {
 
             override fun onSessionClosed(errorResult: ErrorResult?) {
              //   TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Log.v("LoginError",errorResult.toString())
             }
 
         })
