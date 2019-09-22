@@ -17,14 +17,16 @@
         <activity android:name=".UI.JoinActivity"></activity>
         <activity android:name=".UI.Radar.LocationActivity"></activity>
         <activity android:name=".UI.LoginActivity">
+
+        </activity>
+        <activity android:name=".UI.Radar.RadarActivity" />
+        <activity android:name=".UI.Network.NetworkActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UI.Radar.RadarActivity" />
-        <activity android:name=".UI.Network.NetworkActivity" />
         <activity android:name=".UI.MainActivity"></activity>
 
         <meta-data
