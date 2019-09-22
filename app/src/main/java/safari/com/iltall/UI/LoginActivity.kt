@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.kakao.auth.ISessionCallback
 import com.kakao.auth.Session
@@ -27,6 +28,10 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         //getHashKey()
         kakaoInit()
+    }
+
+    fun loginClick(view: View){
+
     }
 
     fun getHashKey(){
