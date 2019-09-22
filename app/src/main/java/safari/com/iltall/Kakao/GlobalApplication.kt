@@ -3,10 +3,17 @@ package safari.com.iltall.Kakao
 import android.app.Application
 import android.content.Context
 import com.kakao.auth.*
+import com.kakao.util.helper.CommonProtocol
+import com.kakao.util.helper.Utility
 
-class GlobalApplication: Application() {
+class GlobalApplication:Application() {
     lateinit var instance:GlobalApplication
 
+    override fun onCreate() {
+        super.onCreate()
+        instance = this
+        KakaoSDK.init(KaKaoSDKAdapter())
+    }
 
     fun getGlobalApplicationContext():GlobalApplication{
         if(instance == null){
@@ -14,6 +21,7 @@ class GlobalApplication: Application() {
         }
         return instance
     }
+
     inner class KaKaoSDKAdapter : KakaoAdapter(){
         override fun getApplicationConfig(): IApplicationConfig {
             //      TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -32,7 +40,6 @@ class GlobalApplication: Application() {
             return object : ISessionConfig {
                 override fun getAuthTypes(): Array<AuthType> {
                     return arrayOf(AuthType.KAKAO_TALK)
-                    //카카오톡으로만 로그인 할 수 있게
                 }
 
                 override fun isUsingWebviewTimer(): Boolean {
@@ -54,9 +61,5 @@ class GlobalApplication: Application() {
         }//getSession
     }
 
-    override fun onCreate() {
-        super.onCreate()
-        instance = this
-        KakaoSDK.init(KaKaoSDKAdapter())
-    }
+
 }
