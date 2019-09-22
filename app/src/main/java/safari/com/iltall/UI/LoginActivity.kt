@@ -1,5 +1,6 @@
 package safari.com.iltall.UI
 
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -29,7 +30,6 @@ class LoginActivity : AppCompatActivity() {
     val CID = "482@naver.com"
     val CPASS = "1234"
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -42,11 +42,27 @@ class LoginActivity : AppCompatActivity() {
         val pass = p_text.text.toString()
 
         if(id == CID && pass == CPASS){
-            //로그인 성공
+            //로그인 성공(다음페이지로 이동)
+            //암호화 해서 비교해줘야됨
+
+            MoveNextPage()
         }
         else{
             //로그인 실패
+            e_text.text = null
+            p_text.text = null
         }
+    }
+
+    fun JoinPage(view:View){
+        var intent = Intent(this,JoinActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun MoveNextPage(){
+        var intent = Intent(applicationContext, RadarActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     fun getHashKey(){
@@ -91,7 +107,6 @@ class LoginActivity : AppCompatActivity() {
         if(Session.getCurrentSession().handleActivityResult(requestCode,resultCode,data)){
             return
         }
-
         super.onActivityResult(requestCode, resultCode, data)
     }
 
@@ -101,9 +116,7 @@ class LoginActivity : AppCompatActivity() {
             override fun onSuccess(result: MeV2Response?) {
             //    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 Toast.makeText(applicationContext,result!!.nickname.toString(),Toast.LENGTH_SHORT).show()
-                var intent = Intent(applicationContext, RadarActivity::class.java)
-                startActivity(intent)
-                finish()
+                MoveNextPage()
             }
 
             override fun onSessionClosed(errorResult: ErrorResult?) {

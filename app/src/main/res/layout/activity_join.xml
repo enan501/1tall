@@ -5,39 +5,33 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".UI.LoginActivity"
+        tools:context=".UI.JoinActivity"
         android:orientation="vertical">
 
-    <com.kakao.usermgmt.LoginButton
-            android:id="@+id/kakao_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="이메일 입력"
+        android:hint="이메일 입력"
             android:inputType="textEmailAddress"
-            android:id="@+id/e_text"
-            />
+            android:id="@+id/je_text"/>
 
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="비밀번호 입력"
-            android:inputType="textPassword"
-            android:id="@+id/p_text"/>
+        android:hint="비밀번호 입력"
+        android:inputType="textPassword"
+            android:id="@+id/jp_text"/>
+
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        android:hint="닉네임 입력"
+            android:id="@+id/jn_text"/>
 
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="로그인"
-            android:onClick="loginClick"/>
-
-    <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="회원가입"
-            android:onClick="JoinPage"/>
-
+        android:text="회원가입"
+            android:onClick="Join"/>
 
 </LinearLayout>
