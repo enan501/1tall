@@ -18,6 +18,7 @@ import com.kakao.util.exception.KakaoException
 import com.kakao.util.helper.Utility
 import kotlinx.android.synthetic.main.activity_login.*
 import safari.com.iltall.R
+import safari.com.iltall.UI.Radar.RadarActivity
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -99,7 +100,10 @@ class LoginActivity : AppCompatActivity() {
         UserManagement.getInstance().me(keys,object:MeV2ResponseCallback(){
             override fun onSuccess(result: MeV2Response?) {
             //    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                Toast.makeText(applicationContext,result!!.id.toString(),Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,result!!.nickname.toString(),Toast.LENGTH_SHORT).show()
+                var intent = Intent(applicationContext, RadarActivity::class.java)
+                startActivity(intent)
+                finish()
             }
 
             override fun onSessionClosed(errorResult: ErrorResult?) {
