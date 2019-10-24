@@ -8,6 +8,9 @@
         tools:context=".UI.LoginActivity"
         android:orientation="vertical">
 
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="250dp"/>
     <com.kakao.usermgmt.LoginButton
             android:id="@+id/kakao_login"
             android:layout_width="match_parent"
