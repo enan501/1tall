@@ -20,15 +20,14 @@
         <activity android:name=".UI.LoginActivity">
 
         </activity>
+        <activity android:name=".UI.StatusActivity">
+    </activity>
         <activity android:name=".UI.Radar.RadarActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".UI.Network.NetworkActivity">
-
         </activity>
         <activity android:name=".UI.MainActivity"></activity>
 
