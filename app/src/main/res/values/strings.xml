@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">1tall</string>
     <string name="kakao_app_key">92c204eb780aef4652252543ec20afeb</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
