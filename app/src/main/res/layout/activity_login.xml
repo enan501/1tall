@@ -6,15 +6,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".UI.LoginActivity"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <Space
-            android:layout_width="match_parent"
-            android:layout_height="250dp"/>
-    <com.kakao.usermgmt.LoginButton
-            android:id="@+id/kakao_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,5 +37,10 @@
             android:text="회원가입"
             android:onClick="JoinPage"/>
 
+    <com.kakao.usermgmt.LoginButton
+            android:id="@+id/kakao_login"
+            android:layout_width="300dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"/>
 
 </LinearLayout>
