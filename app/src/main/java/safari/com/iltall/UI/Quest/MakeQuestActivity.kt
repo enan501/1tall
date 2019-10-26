@@ -96,6 +96,7 @@ class MakeQuestActivity : AppCompatActivity() {
                 position: Int
             ) {
                 val cintent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                file = createImageFile()
                 mImageCaptureUri =  FileProvider.getUriForFile(this@MakeQuestActivity, "safari.com.iltall.provider", file);
                 cintent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, mImageCaptureUri)
                 curPos = position
