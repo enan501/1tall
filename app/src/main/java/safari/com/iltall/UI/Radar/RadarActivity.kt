@@ -1,26 +1,25 @@
 package safari.com.iltall.UI.Radar
 
+
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
-import android.widget.ImageView
 import android.widget.Toast
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget
-import com.google.android.gms.maps.model.LatLng
-
-
 import kotlinx.android.synthetic.main.activity_radar.*
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
 import safari.com.iltall.R
+import safari.com.iltall.UI.Network.NetworkActivity
+import safari.com.iltall.UI.Quest.MakeQuestActivity
+import safari.com.iltall.UI.Quest.QuestListActivity
+import safari.com.iltall.UI.StatusActivity
 
 class RadarActivity : AppCompatActivity() {
 
@@ -32,6 +31,27 @@ class RadarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_radar)
         initMap()
+        initListener()
+    }
+
+    private fun initListener() {
+        rd_network.setOnClickListener {
+            val nextIntent = Intent(this, NetworkActivity::class.java)
+            startActivity(nextIntent)
+        }
+        rd_make_quest.setOnClickListener {
+            val nextIntent = Intent(this, MakeQuestActivity::class.java)
+            startActivity(nextIntent)
+        }
+        rd_solve_quest.setOnClickListener {
+            //val nextIntent = Intent(this, QuestActivity::class.java)
+            val nextIntent = Intent(this, QuestListActivity::class.java)
+            startActivity(nextIntent)
+        }
+        rd_status.setOnClickListener {
+            val nextIntent = Intent(this, StatusActivity::class.java)
+            startActivity(nextIntent)
+        }
     }
 
     @SuppressLint("MissingPermission")

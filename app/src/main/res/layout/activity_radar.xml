@@ -9,8 +9,34 @@
 
 <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
         android:id="@+id/map_view"
         android:orientation="vertical"/>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+            android:gravity="center">
+    <Button
+        android:id="@+id/rd_network"
+        android:text="네트워크"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/rd_make_quest"
+        android:text="문제만들기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/rd_solve_quest"
+        android:text="문제풀기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/rd_status"
+        android:text="상태"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    </LinearLayout>
 </LinearLayout>

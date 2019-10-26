@@ -21,7 +21,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    packagingOptions{
+    packagingOptions {
         exclude "lib/arm64-v8a/librealm-jni.so"
     }
 }
@@ -42,6 +42,6 @@ dependencies {
 
     //카카오 로그인 sdk사용
     implementation group: 'com.kakao.sdk', name: 'usermgmt', version: '1.21.1'
-    implementation fileTree(dir:'libs',include:['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation files('libs/libDaumMapAndroid.jar')
 }
