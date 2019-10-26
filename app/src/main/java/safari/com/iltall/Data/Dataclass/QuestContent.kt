@@ -1,3 +1,3 @@
 package safari.com.iltall.Data.Dataclass
 
-data class QuestContent(var text:String, var img:Int, var isAddLast:Int)
+data class QuestContent(var text:String, var img:String, var isAddLast:Int)
