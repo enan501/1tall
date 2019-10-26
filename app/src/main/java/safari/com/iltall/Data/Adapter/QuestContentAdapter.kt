@@ -68,6 +68,5 @@ class QuestContentAdapter(var items:ArrayList<QuestContent>): RecyclerView.Adapt
                 true
             }
         }
-
     }
 }

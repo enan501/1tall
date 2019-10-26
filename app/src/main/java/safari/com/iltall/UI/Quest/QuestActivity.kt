@@ -46,8 +46,11 @@ class QuestActivity : AppCompatActivity() {
             Toast.makeText(this@QuestActivity,"광고 준비중입니다",Toast.LENGTH_SHORT).show()
         }
         qt_submit.setOnClickListener {
-
+            var mA = qt_answer.text.toString()
+            if(quest.answer == mA){
+                Toast.makeText(this,"정답입니다",Toast.LENGTH_SHORT).show()
+                finish()
+            }
         }
     }
-
 }
