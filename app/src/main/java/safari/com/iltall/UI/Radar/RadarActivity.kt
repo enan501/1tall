@@ -1,16 +1,22 @@
 package safari.com.iltall.UI.Radar
 
-
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.widget.ImageView
 import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget
+import com.google.android.gms.maps.model.LatLng
+
+
 import kotlinx.android.synthetic.main.activity_radar.*
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
@@ -81,6 +87,35 @@ class RadarActivity : AppCompatActivity() {
             override fun onCurrentLocationDeviceHeadingUpdate(p0: MapView?, p1: Float) {
                // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
+        })
+
+        map_view.addView(mapView)
+       mapView.setCalloutBalloonAdapter(CustomQuiz(this))
+        getCurLoc()
+        mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeading
+        mapView.setPOIItemEventListener(object:MapView.POIItemEventListener{
+            override fun onCalloutBalloonOfPOIItemTouched(p0: MapView?, p1: MapPOIItem?) {
+                //   TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Toast.makeText(applicationContext,p1!!.itemName,Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onCalloutBalloonOfPOIItemTouched(
+                p0: MapView?,
+                p1: MapPOIItem?,
+                p2: MapPOIItem.CalloutBalloonButtonType?
+            ) {
+                //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Toast.makeText(applicationContext,p1!!.itemName,Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onDraggablePOIItemMoved(p0: MapView?, p1: MapPOIItem?, p2: MapPoint?) {
+                //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
+                //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Toast.makeText(applicationContext,p1!!.itemName,Toast.LENGTH_SHORT).show()
+            }
 
         })
 
@@ -137,9 +172,9 @@ class RadarActivity : AppCompatActivity() {
         when(requestCode){
             LOCATION_REQUEST->{
                 if(checkAppPermission(permissions)){
-                    Toast.makeText(applicationContext,"위치 권한을 허락합니다",Toast.LENGTH_SHORT).show()
+                  //  Toast.makeText(applicationContext,"위치 권한을 허락합니다",Toast.LENGTH_SHORT).show()
                 }else{
-                    Toast.makeText(applicationContext,"위치 권한이 취소되었습니다",Toast.LENGTH_SHORT).show()
+                  //  Toast.makeText(applicationContext,"위치 권한이 취소되었습니다",Toast.LENGTH_SHORT).show()
                     finish()
                 }
             }
