@@ -23,6 +23,7 @@ import safari.com.iltall.UI.StatusActivity
 
 class RadarActivity : AppCompatActivity() {
 
+    val REQUEST_MAKE_QUEST = 1515
     val LOCATION_REQUEST = 4444
     lateinit var mapView:MapView
 
@@ -41,7 +42,7 @@ class RadarActivity : AppCompatActivity() {
         }
         rd_make_quest.setOnClickListener {
             val nextIntent = Intent(this, MakeQuestActivity::class.java)
-            startActivity(nextIntent)
+            startActivityForResult(nextIntent,REQUEST_MAKE_QUEST)
         }
         rd_solve_quest.setOnClickListener {
             //val nextIntent = Intent(this, QuestActivity::class.java)
@@ -80,6 +81,7 @@ class RadarActivity : AppCompatActivity() {
         })
         map_view.addView(mapView)
         mapView.setCalloutBalloonAdapter(CustomQuiz(this))
+
         getCurLoc()
         mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeading
         mapView.setPOIItemEventListener(object:MapView.POIItemEventListener{
@@ -173,5 +175,17 @@ class RadarActivity : AppCompatActivity() {
             askPermission(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),LOCATION_REQUEST)
         }
     }
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode != RESULT_OK)
+            Toast.makeText(this,"문제 생성 실패",Toast.LENGTH_SHORT).show()
+        else if(requestCode == REQUEST_MAKE_QUEST){
+            var title = data?.getStringExtra("title")
+            var text = data?.getStringExtra("text")
+            var hint = data?.getStringExtra("hint")
+            var answer = data?.getStringExtra("answer")
+            TODO("이곳에 마커 추가를 만들어주세요")
+            Toast.makeText(this,"문제가 등록되었습니다!",Toast.LENGTH_SHORT).show()
+        }
+    }
 }

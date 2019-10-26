@@ -6,7 +6,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".UI.Quest.MakeQuestActivity"
-        android:padding="20dp">
+        android:padding="20dp"
+        android:gravity="center">
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,6 +22,13 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
         <EditText
+                android:id="@+id/mq_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="제목"
+                />
+        <EditText
+                android:id="@+id/mq_text"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:hint="문제를 입력해 주세요!"
@@ -33,6 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             <EditText
+                    android:id="@+id/mq_answer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="정답을 입력해 주세요!"
@@ -53,10 +62,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
     <EditText
+            android:id="@+id/mq_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="힌트를 입력해 주세요!"
             />
         </LinearLayout>
     </LinearLayout>
+    <Button
+            android:text="등록"
+            android:id="@+id/mq_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 </LinearLayout>

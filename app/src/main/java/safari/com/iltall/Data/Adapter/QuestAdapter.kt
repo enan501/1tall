@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import safari.com.iltall.UI.Quest.QuestFragment
 
-class QuestAdapter(fm: FragmentManager, val num:Int): FragmentPagerAdapter(fm) {
+class QuestAdapter(fm: FragmentManager, val num:Int, val content:ArrayList<String>): FragmentPagerAdapter(fm) {
 //    override fun getItemPosition(p0: Any): Int {
 //        return PagerAdapter.POSITION_NONE
 //    }

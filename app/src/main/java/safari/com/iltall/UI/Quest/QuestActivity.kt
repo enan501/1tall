@@ -6,12 +6,12 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_quest.*
-import safari.com.iltall.Data.Adapter.QuestAdapter
 import safari.com.iltall.R
 
 class QuestActivity : AppCompatActivity() {
 
     val pageNum = 3
+    lateinit var answer:String
     lateinit var adapter:FragmentPagerAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +24,15 @@ class QuestActivity : AppCompatActivity() {
         initListener()
     }
     fun initData(){
-
+        var intent = getIntent()
+        qt_title.text = intent.getStringExtra("title")
+        qt_text.text = intent.getStringExtra("text")
+        qt_hint.text = intent.getStringExtra("hint")
+        answer = intent.getStringExtra("answer")
     }
     fun initLayout(){
-        adapter = QuestAdapter(supportFragmentManager,pageNum)
-        qt_pager.adapter = adapter
+        //adapter = QuestAdapter(supportFragmentManager,pageNum)
+        //qt_pager.adapter = adapter
     }
     fun initListener(){
         see_ad.setOnClickListener {
