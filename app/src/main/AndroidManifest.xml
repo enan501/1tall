@@ -20,13 +20,10 @@
         <activity android:name=".UI.Quest.QuestActivity">
 
         </activity>
-            android:theme="@style/AppTheme">
+
         <activity android:name=".UI.Quest.QuestListActivity"></activity>
         <activity android:name=".UI.Quest.MakeQuestActivity" />
-        <activity android:name=".UI.StatusActivity" />
-        <activity android:name=".UI.Quest.QuestActivity" />
         <activity android:name=".UI.JoinActivity" />
-        <activity android:name=".UI.Radar.LocationActivity" />
         <activity android:name=".UI.LoginActivity"></activity>
         <activity android:name=".UI.Radar.RadarActivity" >
             <intent-filter>
