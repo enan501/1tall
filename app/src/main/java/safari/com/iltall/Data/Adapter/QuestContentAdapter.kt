@@ -1,6 +1,5 @@
 package safari.com.iltall.Data.Adapter
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,7 @@ import safari.com.iltall.Data.Dataclass.QuestContent
 import safari.com.iltall.R
 
 
-class QuestContentAdapter(var items:ArrayList<QuestContent>, val context: Context): RecyclerView.Adapter<QuestContentAdapter.ViewHolder>() {
+class QuestContentAdapter(var items:ArrayList<QuestContent>): RecyclerView.Adapter<QuestContentAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val v = LayoutInflater.from(p0.context).inflate(R.layout.item_quest_content,p0,false)
@@ -21,7 +20,15 @@ class QuestContentAdapter(var items:ArrayList<QuestContent>, val context: Contex
         return items.size
     }
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        if(items[p1].isAddLast==1) {
+        if(items[p1].isAddLast==0) {
+            p0.itemView.visibility = View.VISIBLE
+            if(items[p1].img != 0) {
+                p0.img.visibility = View.VISIBLE
+                p0.img.setImageResource(items[p1].img)
+                //p0.content.height = 400
+            }
+        }
+        else if(items[p1].isAddLast==1) {
             p0.content.visibility = View.GONE
             p0.add.visibility = View.VISIBLE
         }
@@ -30,11 +37,6 @@ class QuestContentAdapter(var items:ArrayList<QuestContent>, val context: Contex
             lp.width = 280
             p0.itemView.layoutParams = lp
             p0.itemView.visibility = View.INVISIBLE
-        }
-        else if(items[p1].img != 0) {
-            p0.img.visibility = View.VISIBLE
-            p0.img.setImageResource(items[p1].img)
-            //p0.content.height = 400
         }
     }
     interface OnItemClickListener{
@@ -57,7 +59,8 @@ class QuestContentAdapter(var items:ArrayList<QuestContent>, val context: Contex
             add = itemView.findViewById(R.id.qc_add)
             itemView.setOnClickListener{
                 val position = adapterPosition
-                itemClickListener?.OnItemClick(this,items[position],position)
+                if(position != 0 && position != items.size-1)
+                    itemClickListener?.OnItemClick(this,items[position],position)
             }
             itemView.setOnLongClickListener{
                 val position = adapterPosition
