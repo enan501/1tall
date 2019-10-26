@@ -24,6 +24,9 @@ class QuestListActivity : AppCompatActivity() {
     }
     fun initData(){
         questList = arrayListOf()
+        var intent = intent
+        questList = intent.getSerializableExtra("QUIZ") as ArrayList<Quest>
+        /*
         questList.add(Quest("건덕이 실종사건","개미핥기",153,100,501,false))
         questList.add(Quest("살려주세요","세정대왕",402,315,332))
         questList.add(Quest("집에가고싶다","고래",115,117,321))
@@ -32,6 +35,7 @@ class QuestListActivity : AppCompatActivity() {
         questList.add(Quest("고양이가 사라졌다","다람쥐",1,2,4,false))
         questList.add(Quest("도망자 개미핥기","코끼리",53,115,222))
         questList.add(Quest("탈주","개미핥기",234,998,1022))
+         */
     }
     fun initLayout(){
         val layoutManager =GridLayoutManager(this, 3)
@@ -51,6 +55,7 @@ class QuestListActivity : AppCompatActivity() {
 //                builder.setView(questDialog)
 
                 val nextIntent = Intent(this@QuestListActivity, QuestActivity::class.java)
+                nextIntent.putExtra("PLAY",data)
                 startActivity(nextIntent)
             }
 

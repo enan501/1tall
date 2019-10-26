@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_quest.*
+import safari.com.iltall.Data.Dataclass.Quest
 import safari.com.iltall.R
 
 class QuestActivity : AppCompatActivity() {
@@ -13,6 +14,7 @@ class QuestActivity : AppCompatActivity() {
     val pageNum = 3
     lateinit var answer:String
     lateinit var adapter:FragmentPagerAdapter
+    lateinit var quest:Quest
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quest)
@@ -25,10 +27,13 @@ class QuestActivity : AppCompatActivity() {
     }
     fun initData(){
         var intent = getIntent()
-        qt_title.text = intent.getStringExtra("title")
-        qt_text.text = intent.getStringExtra("text")
-        qt_hint.text = intent.getStringExtra("hint")
-        answer = intent.getStringExtra("answer")
+        quest = intent.getSerializableExtra("PLAY") as Quest
+
+        qt_title.text = quest.title
+        qt_text.text = quest.text
+        qt_hint.text = quest.hint
+        answer =quest.answer
+
     }
     fun initLayout(){
         //adapter = QuestAdapter(supportFragmentManager,pageNum)
