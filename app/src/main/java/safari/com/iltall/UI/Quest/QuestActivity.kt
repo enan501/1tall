@@ -45,6 +45,9 @@ class QuestActivity : AppCompatActivity() {
             see_ad.visibility = View.GONE
             Toast.makeText(this@QuestActivity,"광고 준비중입니다",Toast.LENGTH_SHORT).show()
         }
+        qt_submit.setOnClickListener {
+
+        }
     }
 
 }

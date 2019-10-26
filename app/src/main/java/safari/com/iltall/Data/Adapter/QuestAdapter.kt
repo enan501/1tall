@@ -25,5 +25,4 @@ class QuestAdapter(fm: FragmentManager, val num:Int, val content:ArrayList<Strin
         return ""
     }
 
-
 }
