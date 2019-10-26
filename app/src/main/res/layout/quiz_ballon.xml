@@ -51,6 +51,8 @@
                     android:text="익명문제"
                     android:gravity="center"
                     android:fontFamily="@font/dunggeunmo"/>
+
+
         </LinearLayout>
 
     </LinearLayout>

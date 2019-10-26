@@ -44,6 +44,12 @@ class RadarActivity : AppCompatActivity() {
     val markerPoint:ArrayList<Quest> = arrayListOf(Quest("건국대하ㄱ교정복","개미뇸", 10,5,10,false,"null",MyLocation(37.543700,127.077371),"개미는 뭘까","힌트업다","개미핥기"),Quest("으아악","악",12,2,3,false,"null",MyLocation(37.541990,127.073852),"아아아아악","힌ㅌ아아악ㄱ","답"))
     lateinit var CQ:CustomQuiz
 
+
+
+    init{
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -76,7 +82,8 @@ class RadarActivity : AppCompatActivity() {
 
     fun initMap(){
         mapView = MapView(this)
-        CQ = CustomQuiz(this)
+
+        CQ = CustomQuiz(this,getCurLoc()!!)
         CQ.setData(markerPoint)
         mapView.setCalloutBalloonAdapter(CQ)
 
@@ -135,6 +142,8 @@ class RadarActivity : AppCompatActivity() {
         var gifimg = GlideDrawableImageViewTarget(add_rader)
         Glide.with(this).load(R.raw.working).override(50,50).diskCacheStrategy(DiskCacheStrategy.SOURCE).into(gifimg)*/
     }
+
+
 
     fun makeMarker(){
         for (point in markerPoint){
