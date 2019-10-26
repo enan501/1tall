@@ -20,12 +20,10 @@ class CustomQuiz:CalloutBalloonAdapter{
 
 
     override fun getPressedCalloutBalloon(p0: MapPOIItem?): View? {
-      //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        return null
+        return mCBallon
     }
 
     override fun getCalloutBalloon(p0: MapPOIItem?): View {
-      //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
        // mCBallon.quiz_image.setImageResource()
         Log.d("말풍선","떠라")
         mCBallon.quiz_text.text="문제입ㄴ디ㅏ"
