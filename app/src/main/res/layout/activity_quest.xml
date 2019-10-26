@@ -6,23 +6,102 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".UI.Quest.QuestActivity"
-        android:padding="20dp">
-<TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-    android:text=" * 현재 풀고있는 문제"/>
-    <TextView
-            android:id="@+id/qt_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-    android:text="제목"/>
-    <TextView
-            android:id="@+id/qt_text"
+        android:padding="20dp"
+       android:background="@drawable/background">
+
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-        android:layout_weight="2"/>
+        android:layout_weight="2.5"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:padding = "10dp"
+            android:orientation="vertical"
+            android:background="@drawable/border">
+
+        <TextView
+                android:id="@+id/qt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:fontFamily="@font/dunggeunmo"
+                android:textSize="20dp"
+                android:textColor="@color/colorAccent"
+                android:text="제목"/>
+        <TextView
+                android:id="@+id/qt_text"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:fontFamily="@font/dunggeunmo"
+                android:gravity="center"
+                android:layout_weight="2"/>
+        <LinearLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="10dp"
+                    android:gravity="center">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/dunggeunmo"
+                        android:text="정답 : "
+                        />
+                <EditText
+                        android:id="@+id/qt_answer"
+                        android:hint=""
+                        android:fontFamily="@font/dunggeunmo"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        />
+                <Button
+                        android:id="@+id/qt_submit"
+                        android:text="제출"
+                        android:fontFamily="@font/dunggeunmo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        />
+            </LinearLayout>
+            <TextView
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dunggeunmo"
+                    android:gravity="center"
+                    android:id="@+id/qt_hint"
+                    android:text="" />
+
+            <Button
+                    android:id="@+id/see_ad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/dunggeunmo"
+                    android:text=" 힌트보기" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+
     <!--
     <android.support.v4.view.ViewPager
             android:id="@+id/qt_pager"
@@ -30,57 +109,5 @@
             android:layout_height="0dp"
             android:layout_weight="2" />
     -->
-    <LinearLayout
-            android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-        android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="10dp"
-                android:gravity="center">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-            android:text="정답 : "
-            />
-        <EditText
-            android:id="@+id/qt_answer"
-                android:hint=""
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-            />
-            <Button
-                    android:id="@+id/qt_submit"
-                    android:text="제출"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                />
-        </LinearLayout>
-        <TextView
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=" * Hint" />
 
-        <Button
-            android:id="@+id/see_ad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-        android:text=" 광고보고 힌트얻기 " />
-
-        <TextView
-                android:id="@+id/qt_hint"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="힌트 : 다시한번 잘 생각해 보세요"
-                android:visibility="gone" />
-    </LinearLayout>
 </LinearLayout>

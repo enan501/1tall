@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import safari.com.iltall.Data.Adapter.QuestListAdapter
 import safari.com.iltall.Data.Dataclass.Quest
@@ -38,7 +39,7 @@ class QuestListActivity : AppCompatActivity() {
          */
     }
     fun initLayout(){
-        val layoutManager =GridLayoutManager(this, 3)
+        val layoutManager =LinearLayoutManager(this)
         rView = findViewById(R.id.ql_rView)
         rView.layoutManager = layoutManager
         adapter = QuestListAdapter(questList,this)

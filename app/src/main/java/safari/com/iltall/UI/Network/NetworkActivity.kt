@@ -3,7 +3,9 @@ package safari.com.iltall.UI.Network
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v7.app.AppCompatActivity
+import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_network.*
+import org.w3c.dom.Text
 import safari.com.iltall.Data.Adapter.TabAdapter
 import safari.com.iltall.R
 

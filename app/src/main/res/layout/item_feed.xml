@@ -2,29 +2,47 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/fd_img">
-    </ImageView>
+    android:orientation="horizontal"
+        android:background="@drawable/border"
+        android:layout_margin="1dp"
+        >
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-                android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:id="@+id/fd_img">
+        </ImageView>
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="10"
                 android:layout_height="wrap_content"
-                android:id="@+id/fd_title"
-                android:text="제목"
-                android:padding="10dp"
-                android:textSize="20dp">
-        </TextView>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/fd_content"
-                android:text="내용"
-                android:padding="10dp"/>
+                android:orientation="vertical">
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fd_title"
+                    android:text="제목"
+                    android:gravity="left"
+                    android:padding="10dp"
+                    android:fontFamily="@font/dunggeunmo"
+                    android:textSize="20dp">
+            </TextView>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fd_content"
+                    android:text="내용"
+                    android:fontFamily="@font/dunggeunmo"
+                    android:gravity="center"
+                    android:padding="10dp"/>
+        </LinearLayout>
     </LinearLayout>
+
+
+
 </LinearLayout>

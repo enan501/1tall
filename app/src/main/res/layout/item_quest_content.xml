@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dp" android:layout_height="400dp"
+    android:layout_width="200dp" android:layout_height="300dp"
     android:orientation="vertical"
         android:background="@color/gray"
         android:padding="20dp"
@@ -16,7 +16,10 @@
             android:hint="문제를 입력해 주세요!"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:gravity="center"
+            android:fontFamily="@font/dunggeunmo"
+            android:background="@null"
+            android:layout_weight="3"/>
     <TextView
             android:id="@+id/qc_add"
             android:visibility="gone"
@@ -27,17 +30,37 @@
             android:layout_height="wrap_content"/>
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:gravity="center">
-    <Button
-            android:id="@+id/qc_camera"
-            android:text="카메라"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    <Button
-            android:id="@+id/qc_album"
-            android:text="사진첩"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+
+    <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"/>
+        <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:layout_weight="2"
+                android:src="@drawable/camera"
+                android:id="@+id/qc_camera"
+                android:background="@null"
+                android:layout_margin="2dp"/>
+
+        <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:src="@drawable/gelary"
+                android:scaleType="fitCenter"
+                android:id="@+id/qc_album"
+                android:background="@null"
+                android:layout_margin="2dp"
+                />
+        <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"/>
 </LinearLayout>
 </LinearLayout>

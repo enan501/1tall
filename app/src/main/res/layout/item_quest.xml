@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical"
+        android:background="#ECBBBB"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:padding="10dp">
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -10,31 +14,41 @@
     </ImageView>
 
     <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                 android:id="@+id/qi_title"
-                    android:text="제목 : "
+                    android:gravity="left"
+                    android:textColor="#ffffff"
+                    android:fontFamily="@font/dunggeunmo"
+                    android:textSize="30dp"
+                    android:text="제목"
                 />
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/qi_author"
+                    android:fontFamily="@font/dunggeunmo"
+                    android:gravity="left"
                 android:text="낸 사람 : "/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/qi_solved"
+                    android:fontFamily="@font/dunggeunmo"
+                    android:gravity="left"
                 android:text="맞춘 사람 : "/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/qi_submitted"
+                    android:fontFamily="@font/dunggeunmo"
+                    android:gravity="left"
                 android:text="시도한 사람 : "/>
     </LinearLayout>
     <LinearLayout
@@ -44,13 +58,20 @@
             android:layout_gravity="right">
         <Button
                 android:id="@+id/qi_like_btn"
-                android:text="♡"
+                android:text="♥"
+                android:background="#00ffffff"
+                android:textColor="#ffffff"
+                android:fontFamily="@font/dunggeunmo"
                 android:layout_width="30dp"
+                android:textSize="20dp"
                 android:layout_height="30dp"/>
         <TextView
                 android:id="@+id/qi_likes"
                 android:text="+1,512"
-                android:textSize="8dp"
+                android:textSize="20dp"
+                android:fontFamily="@font/dunggeunmo"
+                android:textColor="#ffffff"
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"/>
     </LinearLayout>

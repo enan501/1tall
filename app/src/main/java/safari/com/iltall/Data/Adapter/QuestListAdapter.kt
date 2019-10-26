@@ -21,11 +21,11 @@ class QuestListAdapter(var items:ArrayList<Quest>, val context: Context): Recycl
         return items.size
     }
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        p0.title.text = "제목 : " + items[p1].title
-        p0.author.text = "낸 사람 : " + items[p1].author
-        p0.solved.text = "푼 문제 : " + items[p1].solved.toString()
-        p0.submitted.text = "낸 문제 : " + items[p1].submitted.toString()
-        p0.likes.text = "+ "+ items[p1].likes
+        p0.title.text =  items[p1].title
+        p0.author.text = items[p1].author
+        p0.solved.text =  items[p1].solved.toString()+"명이 풀었어요"
+        p0.submitted.text = items[p1].submitted.toString()+"개의 문제가 더 있어요"
+        p0.likes.text = "+"+ items[p1].likes
 
     }
     interface OnItemClickListener{
