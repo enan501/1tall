@@ -162,8 +162,10 @@ class MakeQuestActivity : AppCompatActivity() {
             }
             if (requestCode == CAMERA_IMAGE) {
                 if (resultCode == Activity.RESULT_OK) {
+                    var file = File(mPhoto)
+                    //contentList[curPos].img = mImageCaptureUri.path
+                    contentList[curPos].img = Uri.fromFile(file).path
 
-                    contentList[curPos].img = mImageCaptureUri.path
                     adapter.notifyDataSetChanged()
 
                 }
