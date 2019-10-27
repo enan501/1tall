@@ -28,6 +28,7 @@ import safari.com.iltall.Data.Dataclass.*
 import safari.com.iltall.R
 import safari.com.iltall.UI.Network.NetworkActivity
 import safari.com.iltall.UI.Quest.MakeQuestActivity
+import safari.com.iltall.UI.Quest.QuestActivity
 import safari.com.iltall.UI.Quest.QuestListActivity
 import safari.com.iltall.UI.StatusActivity
 
@@ -35,10 +36,12 @@ class RadarActivity : AppCompatActivity() {
 
     val REQUEST_MAKE_QUEST = 1515
     val LOCATION_REQUEST = 4444
+    val CORRECT = 9999
     lateinit var mapView:MapView
     lateinit var user: Follow
-    var putMarker:ArrayList<Quest> = arrayListOf()
+    var nowMarker:Quest?= null
     lateinit var curLocation: MyLocation
+    var putQ:ArrayList<Quest> = arrayListOf()
     val markerPoint:ArrayList<Quest> = arrayListOf(
         Quest("건국대하ㄱ교정복",User("개미뇸", "android.resource://safari.com.iltall/drawable/profile"), 10,5,10,false,"null",MyLocation(37.543700,127.077371),
         arrayListOf(QuestContent("개미는 뭘까","",0),QuestContent("개미는 오늘도","",0)),"힌트업다","개미핥기"),
@@ -79,7 +82,7 @@ class RadarActivity : AppCompatActivity() {
         rd_solve_quest.setOnClickListener {
             //val nextIntent = Intent(this, QuestActivity::class.java)
             val nextIntent = Intent(this, QuestListActivity::class.java)
-            nextIntent.putExtra("QUIZ",putMarker)
+            nextIntent.putExtra("QUIZ",putQ)
             startActivity(nextIntent)
         }
         rd_status.setOnClickListener {
@@ -144,6 +147,33 @@ class RadarActivity : AppCompatActivity() {
                     val questDialog = layoutInflater.inflate(R.layout.quiz_ballon, null)
                     questDialog.quiz_title.text = marker.title
                     questDialog.user_name.text = marker.user.name
+                    questDialog.saveBtn.setOnClickListener {
+                        //담기
+                        var check = true
+                        for (i in 0..putQ.size-1){
+                            if(putQ[i].title == marker.title){
+                                Toast.makeText(this,"이미 담긴 문제입니다",Toast.LENGTH_SHORT).show()
+                                check = false
+                            }
+                        }
+                        if(check){
+                            Toast.makeText(this,"문제를 담았습니다",Toast.LENGTH_SHORT).show()
+                            putQ.add(marker)
+                        }
+                    }
+                    questDialog.playBtn.setOnClickListener {
+                        if(!marker.isSolved){
+                            nowMarker = marker
+                            Toast.makeText(this,nowMarker!!.title,Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this,QuestActivity::class.java)
+                            intent.putExtra("PLAY",marker)
+                            startActivityForResult(intent,CORRECT)
+
+                        }else{
+                            Toast.makeText(this,"이미 푼 문제입니다",Toast.LENGTH_SHORT).show()
+                        }
+                        //풀기
+                    }
                     questDialog.user_image.setImageURI(Uri.parse(marker.user.image))
                     builder.setView(questDialog)
                     val dialog = builder.create()
@@ -271,6 +301,14 @@ class RadarActivity : AppCompatActivity() {
             makeMarker()
             CQ.setData(markerPoint)
             Toast.makeText(this,"문제가 등록되었습니다!",Toast.LENGTH_SHORT).show()
+        }else if(requestCode==CORRECT && resultCode == Activity.RESULT_OK){
+            for (i in 0..markerPoint.size-1){
+                if(markerPoint[i].title == nowMarker!!.title){
+                    markerPoint[i].isSolved = true
+                    break
+                  //  markerPoint.remove(nowMarker!!)
+                }
+            }
         }
     }
 }

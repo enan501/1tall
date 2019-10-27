@@ -70,43 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="5.9"/>
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="horizontal"
-                android:layout_weight="0.6"
-                android:id="@+id/hideLayer"
-                android:visibility="visible"
-                android:gravity="center">
 
-
-            <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitCenter"
-                    android:id="@+id/quiz_put"
-                    android:enabled="true"
-                    android:fontFamily="@font/dunggeunmo"
-                    android:background="@null"
-                    android:textColor="#ffffff"
-                    android:src="@drawable/savebtn"
-                    android:layout_margin="10dp"
-                    android:text="담기"></ImageButton>
-
-            <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:id="@+id/quiz_solve"
-                    android:scaleType="fitCenter"
-                    android:enabled="true"
-                    android:fontFamily="@font/dunggeunmo"
-                    android:background="@null"
-                    android:textColor="#ffffff"
-                    android:src="@drawable/playbtn"
-                    android:layout_margin="10dp"
-                    android:text="풀기"></ImageButton>
-
-        </LinearLayout>
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

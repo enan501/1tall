@@ -42,15 +42,40 @@
                 android:layout_height="match_parent"
             android:layout_weight="5"
                 android:orientation="vertical"
-                android:gravity="center_vertical">
+                android:gravity="center"
+                >
 
             <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:id="@+id/quiz_title"
                     android:text="익명문제"
                     android:gravity="center"
+                    android:textSize="20dp"
+                    android:layout_margin="10dp"
                     android:fontFamily="@font/dunggeunmo"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_margin="10dp">
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/savebtn"
+                        android:background="@null"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/saveBtn"></ImageButton>
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/playbtn"
+                        android:background="@null"
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/playBtn"></ImageButton>
+            </LinearLayout>
 
 
         </LinearLayout>
