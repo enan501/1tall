@@ -23,6 +23,19 @@
                 android:layout_height="match_parent"
                 android:layout_weight="10"
                 android:orientation="vertical">
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rk_rank"
+                    android:text="1위"
+                    android:fontFamily="@font/dunggeunmo"
+                    android:padding="10dp"
+                    android:textSize="20dp"
+                    android:visibility="gone"
+                    />
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -32,10 +45,8 @@
                     android:padding="10dp"
                     android:textSize="20dp"
                     android:gravity="left"
-                    android:fontFamily="@font/dunggeunmo"
-
-                    >
-            </TextView>
+                    android:fontFamily="@font/dunggeunmo"/>
+        </LinearLayout>
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

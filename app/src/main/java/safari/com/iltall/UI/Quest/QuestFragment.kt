@@ -15,9 +15,6 @@ import safari.com.iltall.R
  * A simple [Fragment] subclass.
  */
 class QuestFragment : Fragment() {
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
 
     lateinit var content:QuestContent
     lateinit var v:View

@@ -1,6 +1,7 @@
 package safari.com.iltall.UI.Radar
 
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -14,9 +15,7 @@ import kotlinx.android.synthetic.main.activity_radar.*
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
-import safari.com.iltall.Data.Dataclass.MyLocation
-import safari.com.iltall.Data.Dataclass.Quest
-import safari.com.iltall.Data.Dataclass.QuestContent
+import safari.com.iltall.Data.Dataclass.*
 import safari.com.iltall.R
 import safari.com.iltall.UI.Network.NetworkActivity
 import safari.com.iltall.UI.Quest.MakeQuestActivity
@@ -28,6 +27,7 @@ class RadarActivity : AppCompatActivity() {
     val REQUEST_MAKE_QUEST = 1515
     val LOCATION_REQUEST = 4444
     lateinit var mapView:MapView
+    lateinit var user: Follow
     val markerPoint:ArrayList<Quest> = arrayListOf(
         Quest("건국대하ㄱ교정복","개미뇸", 10,5,10,false,"null",MyLocation(37.543700,127.077371),
         arrayListOf(QuestContent("개미는 뭘까","",0),QuestContent("개미는 오늘도","",0)),"힌트업다","개미핥기"),
@@ -39,9 +39,14 @@ class RadarActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_radar)
+        initData()
         initPermission()
         initMap()
         initListener()
+    }
+
+    private fun initData() {
+        user = Follow("","whale",100,30,"견습 탐정",15,130,127, 1, arrayListOf(Title("견습 탐정",""), Title("묻고 더블로가!",""), Title( "숙련된 탐정", ""), Title("바보","")))
     }
 
     private fun initListener() {
@@ -61,13 +66,13 @@ class RadarActivity : AppCompatActivity() {
         }
         rd_status.setOnClickListener {
             val nextIntent = Intent(this, StatusActivity::class.java)
+            nextIntent.putExtra("user",user)
             startActivity(nextIntent)
         }
     }
 
     fun initMap(){
         mapView = MapView(this)
-
 
         CQ = CustomQuiz(this,getCurLoc()!!)
         CQ.setData(markerPoint)
@@ -90,7 +95,9 @@ class RadarActivity : AppCompatActivity() {
             override fun onCurrentLocationDeviceHeadingUpdate(p0: MapView?, p1: Float) {
             }
         })
+
         map_view.addView(mapView)
+
     }
 
     fun getCurLoc(): MyLocation? {
@@ -186,9 +193,7 @@ class RadarActivity : AppCompatActivity() {
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode != RESULT_OK)
-            Toast.makeText(this,"문제 생성 실패",Toast.LENGTH_SHORT).show()
-        else if(requestCode == REQUEST_MAKE_QUEST){
+        if(requestCode == REQUEST_MAKE_QUEST && resultCode == Activity.RESULT_OK){
             var title = data?.getStringExtra("title")
             var content = data?.getSerializableExtra("content") as ArrayList<QuestContent>
             var hint = data?.getStringExtra("hint")

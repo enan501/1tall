@@ -11,7 +11,7 @@ import safari.com.iltall.Data.Dataclass.Follow
 import safari.com.iltall.R
 
 
-class FollowAdapter(var items:ArrayList<Follow>, val context: Context): RecyclerView.Adapter<FollowAdapter.ViewHolder>() {
+class FollowAdapter(var items:ArrayList<Follow>, val context: Context, var isRank:Boolean): RecyclerView.Adapter<FollowAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val v = LayoutInflater.from(p0.context).inflate(R.layout.item_follow,p0,false)
@@ -21,9 +21,13 @@ class FollowAdapter(var items:ArrayList<Follow>, val context: Context): Recycler
         return items.size
     }
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
+        if(isRank){
+            p0.rank.visibility = View.VISIBLE
+            p0.rank.text = items[p1].rank.toString() + "위"
+        }
         p0.id.text = items[p1].id
         p0.solved.text = "푼 문제 : " + items[p1].solved.toString()
-        p0.submitted.text = "낸 문제 : " + items[p1].submitted.toString()
+        p0.submitted.text = "낸 문제 : " + items[p1].gave.toString()
 
     }
     interface OnItemClickListener{
@@ -41,8 +45,10 @@ class FollowAdapter(var items:ArrayList<Follow>, val context: Context): Recycler
         var id: TextView
         var solved: TextView
         var submitted: TextView
+        var rank: TextView
         init{
             img = itemView.findViewById(R.id.fw_img)
+            rank = itemView.findViewById(R.id.rk_rank)
             id = itemView.findViewById(R.id.fw_id)
             solved = itemView.findViewById(R.id.fw_solved)
             submitted = itemView.findViewById(R.id.fw_submitted)
