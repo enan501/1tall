@@ -145,7 +145,6 @@
                         android:fontFamily="@font/dunggeunmo"
                         android:layout_width="wrap_content"
                         android:gravity="center"
-                        android:textFontWeight="bold"
                         android:layout_height="wrap_content"/>
                 <ImageView
                         android:layout_width="wrap_content"

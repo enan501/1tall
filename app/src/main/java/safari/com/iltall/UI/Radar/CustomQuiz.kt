@@ -1,27 +1,16 @@
 package safari.com.iltall.UI.Radar
 
 import android.content.Context
-import android.content.Intent
-import android.graphics.drawable.Drawable
-import android.location.LocationManager
 import android.net.Uri
-import android.support.v4.content.ContextCompat.startActivity
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.VISIBLE
-import android.view.View.X
-import android.widget.Button
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_radar.*
 import kotlinx.android.synthetic.main.quiz_ballon.view.*
 import net.daum.mf.map.api.CalloutBalloonAdapter
 import net.daum.mf.map.api.MapPOIItem
 import safari.com.iltall.Data.Dataclass.MyLocation
 import safari.com.iltall.Data.Dataclass.Quest
 import safari.com.iltall.R
-import safari.com.iltall.UI.Quest.QuestActivity
-import safari.com.iltall.UI.Quest.QuestListActivity
 
 class CustomQuiz:CalloutBalloonAdapter{
 
@@ -50,7 +39,7 @@ class CustomQuiz:CalloutBalloonAdapter{
         var rA = context as RadarActivity
        // rA.btnInVIsible()
         if(distance <=30){
-            rA.btnVisible(q!!)
+
         }else{
             Log.d("거리","10M이내아님")
            // rA.btnInVIsible()
