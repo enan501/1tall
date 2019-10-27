@@ -15,6 +15,9 @@ import safari.com.iltall.R
  * A simple [Fragment] subclass.
  */
 class QuestFragment : Fragment() {
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+    }
 
     lateinit var content:QuestContent
     lateinit var v:View
@@ -28,6 +31,7 @@ class QuestFragment : Fragment() {
         init()
         return v
     }
+
     fun init(){
         if(content.img.isNotEmpty()){
             v.qf_img.visibility = View.VISIBLE
