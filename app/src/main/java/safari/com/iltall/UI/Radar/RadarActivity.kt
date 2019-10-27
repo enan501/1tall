@@ -1,35 +1,22 @@
 package safari.com.iltall.UI.Radar
 
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.res.Resources
-import android.graphics.*
-import android.graphics.drawable.BitmapDrawable
-import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
-import android.widget.ImageView
 import android.widget.Toast
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.engine.Resource
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget
-import com.google.android.gms.maps.model.LatLng
-
-
 import kotlinx.android.synthetic.main.activity_radar.*
-import net.daum.mf.map.api.MapCircle
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
 import safari.com.iltall.Data.Dataclass.MyLocation
 import safari.com.iltall.Data.Dataclass.Quest
+import safari.com.iltall.Data.Dataclass.QuestContent
 import safari.com.iltall.R
 import safari.com.iltall.UI.Network.NetworkActivity
 import safari.com.iltall.UI.Quest.MakeQuestActivity
@@ -41,7 +28,11 @@ class RadarActivity : AppCompatActivity() {
     val REQUEST_MAKE_QUEST = 1515
     val LOCATION_REQUEST = 4444
     lateinit var mapView:MapView
-    val markerPoint:ArrayList<Quest> = arrayListOf(Quest("건국대하ㄱ교정복","개미뇸", 10,5,10,false,"null",MyLocation(37.543700,127.077371),"개미는 뭘까","힌트업다","개미핥기"),Quest("으아악","악",12,2,3,false,"null",MyLocation(37.541990,127.073852),"아아아아악","힌ㅌ아아악ㄱ","답"))
+    val markerPoint:ArrayList<Quest> = arrayListOf(
+        Quest("건국대하ㄱ교정복","개미뇸", 10,5,10,false,"null",MyLocation(37.543700,127.077371),
+        arrayListOf(QuestContent("개미는 뭘까","",0),QuestContent("개미는 오늘도","",0)),"힌트업다","개미핥기"),
+        Quest("으아악","악",12,2,3,false,"null",MyLocation(37.541990,127.073852),
+        arrayListOf(QuestContent("으악ㅇ극각극가각각아앙아ㅏㄱ","",0)),"힌ㅌ아아악ㄱ","답"))
     lateinit var CQ:CustomQuiz
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -199,11 +190,11 @@ class RadarActivity : AppCompatActivity() {
             Toast.makeText(this,"문제 생성 실패",Toast.LENGTH_SHORT).show()
         else if(requestCode == REQUEST_MAKE_QUEST){
             var title = data?.getStringExtra("title")
-            var text = data?.getStringExtra("text")
+            var content = data?.getSerializableExtra("content") as ArrayList<QuestContent>
             var hint = data?.getStringExtra("hint")
             var answer = data?.getStringExtra("answer")
             //TODO("이곳에 마커 추가를 만들어주세요")
-            var q = Quest(title!!,"익명",0,0,0,false,"null",getCurLoc()!!,text!!,hint!!,answer!!)
+            var q = Quest(title!!,"익명",0,0,0,false,"null",getCurLoc()!!,content,hint,answer)
             markerPoint.add(q)
             makeMarker()
             CQ.setData(markerPoint)

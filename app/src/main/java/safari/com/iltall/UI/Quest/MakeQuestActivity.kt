@@ -72,6 +72,7 @@ class MakeQuestActivity : AppCompatActivity() {
         snapHelper.attachToRecyclerView(mq_rView) //아이템 가운데로 끌어 맞추기
         adapter = QuestContentAdapter(contentList)
         mq_rView.adapter = adapter
+        layoutManager.scrollToPosition(2)
         smoothScroller.targetPosition = 1
         smoothScroller.computeScrollVectorForPosition(1)
         contentList.removeAt(0)
@@ -135,15 +136,19 @@ class MakeQuestActivity : AppCompatActivity() {
             mq_hint_block.visibility = View.VISIBLE
         }
         mq_submit.setOnClickListener {
+            contentList.removeAt(0)
+            contentList.removeAt(contentList.size-1)
+            contentList.removeAt(contentList.size-1)
             var intent = Intent()
-            intent.putExtra("title",mq_title.text)
-            //intent.putExtra("text",mq_text.text)
-            intent.putExtra("hint",mq_hint.text)
-            intent.putExtra("answer",mq_answer.text)
+            intent.putExtra("title",mq_title.text.toString())
+            intent.putExtra("content",contentList)
+            intent.putExtra("hint",mq_hint.text.toString())
+            intent.putExtra("answer",mq_answer.text.toString())
             setResult(RESULT_OK,intent)
             finish()
         }
     }
+
     fun getPathFromUri(uri: Uri): String {
         val cursor = contentResolver.query(uri, null, null, null, null)
         cursor!!.moveToNext()

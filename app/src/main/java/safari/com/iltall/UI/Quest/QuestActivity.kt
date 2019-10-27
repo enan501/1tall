@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_quest.*
+import safari.com.iltall.Data.Adapter.QuestAdapter
 import safari.com.iltall.Data.Dataclass.Quest
 import safari.com.iltall.R
 
@@ -30,14 +31,13 @@ class QuestActivity : AppCompatActivity() {
         quest = intent.getSerializableExtra("PLAY") as Quest
 
         qt_title.text = quest.title
-        qt_text.text = quest.text
         qt_hint.text = quest.hint
         answer =quest.answer
 
     }
     fun initLayout(){
-        //adapter = QuestAdapter(supportFragmentManager,pageNum)
-        //qt_pager.adapter = adapter
+        adapter = QuestAdapter(supportFragmentManager,quest.content)
+        qt_pager.adapter = adapter
     }
     fun initListener(){
         see_ad.setOnClickListener {

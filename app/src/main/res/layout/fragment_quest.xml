@@ -4,14 +4,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".UI.Quest.QuestFragment">
-
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+        >
+    <ImageView
+            android:id="@+id/qf_img"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:scaleType="fitCenter"
+            android:visibility="gone"/>
     <TextView
             android:id="@+id/qf_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="으아ㅏㅏ\n\n으야야알을ㅇ믈ㅇ라아아ㅏ\n\n아ㅡ아ㅡ아"
+            android:fontFamily="@font/dunggeunmo"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:textSize="20dp"/>
-
+            />
+    </LinearLayout>
 </FrameLayout>

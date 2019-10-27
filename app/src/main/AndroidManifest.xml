@@ -35,9 +35,7 @@
         </activity>
 
         <activity android:name=".UI.Quest.QuestListActivity"></activity>
-        <activity android:name=".UI.Quest.MakeQuestActivity"
-                android:screenOrientation="portrait"
-                android:windowSoftInputMode="adjustResize|adjustPan"/>
+        <activity android:name=".UI.Quest.MakeQuestActivity"/>
         <activity android:name=".UI.JoinActivity" />
         <activity android:name=".UI.LoginActivity"></activity>
         <activity android:name=".UI.Radar.RadarActivity" >
