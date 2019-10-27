@@ -12,7 +12,6 @@ import safari.com.iltall.R
 
 class QuestActivity : AppCompatActivity() {
 
-    val pageNum = 3
     lateinit var answer:String
     lateinit var adapter:FragmentPagerAdapter
     lateinit var quest:Quest

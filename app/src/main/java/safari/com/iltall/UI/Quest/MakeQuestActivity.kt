@@ -162,6 +162,11 @@ class MakeQuestActivity : AppCompatActivity() {
                 if (resultCode == Activity.RESULT_OK) {
                     contentList[curPos].img = getPathFromUri(data!!.data)
                     adapter.notifyDataSetChanged()
+                    mq_rView.adapter = adapter
+                    layoutManager.scrollToPosition(curPos)
+                    smoothScroller.targetPosition = curPos
+                    smoothScroller.computeScrollVectorForPosition(curPos)
+                    layoutManager.startSmoothScroll(smoothScroller)
 
                 }
             }
@@ -170,9 +175,12 @@ class MakeQuestActivity : AppCompatActivity() {
                     var file = File(mPhoto)
                     //contentList[curPos].img = mImageCaptureUri.path
                     contentList[curPos].img = Uri.fromFile(file).path
-
                     adapter.notifyDataSetChanged()
-
+                    mq_rView.adapter = adapter
+                    layoutManager.scrollToPosition(curPos)
+                    smoothScroller.targetPosition = curPos
+                    smoothScroller.computeScrollVectorForPosition(curPos)
+                    layoutManager.startSmoothScroll(smoothScroller)
                 }
             }
     }
