@@ -1,17 +1,32 @@
 package safari.com.iltall.UI.Radar
 
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Resources
+import android.graphics.*
+import android.graphics.drawable.BitmapDrawable
+import android.location.Location
 import android.location.LocationManager
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.widget.ImageView
 import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.engine.Resource
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget
+import com.google.android.gms.maps.model.LatLng
+
+
 import kotlinx.android.synthetic.main.activity_radar.*
+import net.daum.mf.map.api.MapCircle
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
@@ -19,8 +34,12 @@ import safari.com.iltall.Data.Dataclass.*
 import safari.com.iltall.R
 import safari.com.iltall.UI.Network.NetworkActivity
 import safari.com.iltall.UI.Quest.MakeQuestActivity
+import safari.com.iltall.UI.Quest.QuestActivity
 import safari.com.iltall.UI.Quest.QuestListActivity
 import safari.com.iltall.UI.StatusActivity
+import java.io.InputStream
+import java.net.URI
+import java.net.URL
 
 class RadarActivity : AppCompatActivity() {
 
@@ -28,10 +47,11 @@ class RadarActivity : AppCompatActivity() {
     val LOCATION_REQUEST = 4444
     lateinit var mapView:MapView
     lateinit var user: Follow
+    var putMarker:ArrayList<Quest> = arrayListOf()
     val markerPoint:ArrayList<Quest> = arrayListOf(
-        Quest("건국대하ㄱ교정복","개미뇸", 10,5,10,false,"null",MyLocation(37.543700,127.077371),
+        Quest("건국대하ㄱ교정복",User("개미뇸", "android.resource://safari.com.iltall/drawable/profile"), 10,5,10,false,"null",MyLocation(37.543700,127.077371),
         arrayListOf(QuestContent("개미는 뭘까","",0),QuestContent("개미는 오늘도","",0)),"힌트업다","개미핥기"),
-        Quest("으아악","악",12,2,3,false,"null",MyLocation(37.541990,127.073852),
+        Quest("으아악",User("악","android.resource://safari.com.iltall/drawable/profile"),12,2,3,false,"null",MyLocation(37.541990,127.073852),
         arrayListOf(QuestContent("으악ㅇ극각극가각각아앙아ㅏㄱ","",0)),"힌ㅌ아아악ㄱ","답"))
     lateinit var CQ:CustomQuiz
 
@@ -39,14 +59,21 @@ class RadarActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_radar)
-        initData()
+        /*
+        var uri = Uri.parse("android.resource://safari.com.iltall/drawable/profile");
+        var stream = getContentResolver().openInputStream(uri);
+        Log.d("URI",stream!!.toString())
+
+         */
+       // btnInVIsible()
         initPermission()
         initMap()
         initListener()
+        initData()
     }
 
     private fun initData() {
-        user = Follow("","whale",100,30,"견습 탐정",15,130,127, 1, arrayListOf(Title("견습 탐정",""), Title("묻고 더블로가!",""), Title( "숙련된 탐정", ""), Title("바보","")))
+        user = Follow("","whale",100,30,"견습 탐정",15,130,127, 1, arrayListOf(Title("견습 탐정","android.resource://safari.com.iltall/drawable/bronze"), Title("묻고 더블로가!","android.resource://safari.com.iltall/drawable/gold"), Title( "숙련된 탐정", "android.resource://safari.com.iltall/drawable/silver"), Title("바보","android.resource://safari.com.iltall/drawable/gold")))
     }
 
     private fun initListener() {
@@ -61,7 +88,7 @@ class RadarActivity : AppCompatActivity() {
         rd_solve_quest.setOnClickListener {
             //val nextIntent = Intent(this, QuestActivity::class.java)
             val nextIntent = Intent(this, QuestListActivity::class.java)
-            nextIntent.putExtra("QUIZ",markerPoint)
+            nextIntent.putExtra("QUIZ",putMarker)
             startActivity(nextIntent)
         }
         rd_status.setOnClickListener {
@@ -95,9 +122,7 @@ class RadarActivity : AppCompatActivity() {
             override fun onCurrentLocationDeviceHeadingUpdate(p0: MapView?, p1: Float) {
             }
         })
-
         map_view.addView(mapView)
-
     }
 
     fun getCurLoc(): MyLocation? {
@@ -151,6 +176,25 @@ class RadarActivity : AppCompatActivity() {
         }
     }
 
+
+    fun btnVisible(q:Quest){
+
+      //  hideLayer.visibility = VISIBLE
+        quiz_put.setOnClickListener {
+            putMarker.add(q!!)
+        }
+        quiz_solve.setOnClickListener {
+            val nextIntent = Intent(this, QuestActivity::class.java)
+           nextIntent.putExtra("PLAY",q!!)
+            startActivity(nextIntent)
+           // btnInVIsible()
+        }
+    }
+
+    fun btnInVIsible(){
+
+    }
+
     fun checkAppPermission(requestPermission:Array<String>):Boolean{
         val requestResult = BooleanArray(requestPermission.size)
         for (i in requestResult.indices){
@@ -199,7 +243,7 @@ class RadarActivity : AppCompatActivity() {
             var hint = data?.getStringExtra("hint")
             var answer = data?.getStringExtra("answer")
             //TODO("이곳에 마커 추가를 만들어주세요")
-            var q = Quest(title!!,"익명",0,0,0,false,"null",getCurLoc()!!,content,hint,answer)
+            var q = Quest(title!!,User("익명","android.resource://safari.com.iltall/drawable/profile"),0,0,0,false,"null",getCurLoc()!!,content,hint,answer)
             markerPoint.add(q)
             makeMarker()
             CQ.setData(markerPoint)

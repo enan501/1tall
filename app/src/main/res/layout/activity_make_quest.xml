@@ -18,77 +18,87 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2.1"/>
-    <LinearLayout
+            android:layout_weight="2.3"/>
+    <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="8"
-            android:paddingTop="10dp"
-            android:gravity="center_horizontal"
-            android:paddingBottom="10dp"
-            android:orientation="vertical">
-
+            android:scrollbarThumbVertical="@null"
+            android:scrollbars="vertical">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
             <EditText
                     android:id="@+id/mq_title"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/dunggeunmo"
                     android:hint="제목"
+                    android:gravity="center"
                     android:background="@null"
+                    android:layout_margin="3dp"
                     />
-        <android.support.v7.widget.RecyclerView
-                android:id="@+id/mq_rView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="10"/>
-        <EditText
-                android:id="@+id/mq_answer"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:fontFamily="@font/dunggeunmo"
-                android:hint="정답을 입력해 주세요!"
-                android:background="@null"/>
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mq_rView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"/>
+            <EditText
+                    android:id="@+id/mq_answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:fontFamily="@font/dunggeunmo"
+                    android:hint="정답을 입력해 주세요!"
+                    android:background="@drawable/answer"
+                    android:textSize="13dp"
+                    android:padding = "5dp"
+                    android:layout_margin="10dp"
+                    />
+            <Button
+                    android:id="@+id/mq_hint_btn"
+                    android:text="힌트 추가"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/dunggeunmo"
+                    android:background="@null"/>
 
-        <Button
-                android:id="@+id/mq_hint_btn"
-                android:text="힌트 추가"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:fontFamily="@font/dunggeunmo"
-                android:layout_weight="1"
-                android:background="@null"/>
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-               android:id="@+id/mq_hint_block"
-                android:visibility="invisible">
+                android:layout_height="wrap_content"
+                android:id="@+id/mq_hint_block"
+                android:visibility="gone">
             <EditText
                     android:id="@+id/mq_hint"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:fontFamily="@font/dunggeunmo"
-                    android:hint="힌트를 입력해 주세요!"
-
-                    android:background="@null"
+                    android:hint="힌트 입력해 주세요!"
+                    android:background="@drawable/answer"
+                    android:textSize="13dp"
+                    android:padding = "5dp"
+                    android:layout_margin="10dp"
                     />
-        </LinearLayout>
 
-        <Button
-                android:text="등록"
-                android:id="@+id/mq_submit"
-                android:fontFamily="@font/dunggeunmo"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="@null"/>
-    </LinearLayout>
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
+        </LinearLayout>
+            <ImageButton
+                    android:text="등록"
+                    android:id="@+id/mq_submit"
+                    android:fontFamily="@font/dunggeunmo"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:scaleType="fitCenter"
+                    android:layout_weight="1"
+                    android:src="@drawable/send"
+                    android:background="@null"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"/>
     </LinearLayout>
 

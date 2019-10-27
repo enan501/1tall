@@ -1,6 +1,7 @@
 package safari.com.iltall.Data.Adapter
 
 import android.content.Context
+import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -20,8 +21,8 @@ import safari.com.iltall.R
             return items.size
         }
         override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-            p0.img.setImageResource(R.drawable.trophy)
-            p0.Title.text = items[p1].name
+            p0.img.setImageURI(Uri.parse(items[p1].img))
+            p0.Title.text = "["+items[p1].name+"]"
 
         }
         interface OnItemClickListener{

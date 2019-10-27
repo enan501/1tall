@@ -1,11 +1,13 @@
 package safari.com.iltall.Data.Adapter
 
 import android.content.Context
+import android.support.v4.content.ContextCompat.getDrawable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import safari.com.iltall.Data.Dataclass.Quest
 import safari.com.iltall.R
@@ -21,8 +23,14 @@ class QuestListAdapter(var items:ArrayList<Quest>, val context: Context): Recycl
         return items.size
     }
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
+        if(items[p1].isSolved){
+            //푼 문제면
+            p0.background.background = getDrawable(context,R.drawable.listfoem)
+        }else{
+            p0.background.background = getDrawable(context,R.drawable.listform2)
+        }
         p0.title.text =  items[p1].title
-        p0.author.text = items[p1].author
+        p0.author.text = items[p1].user.name
         p0.solved.text =  items[p1].solved.toString()+"명이 풀었어요"
         p0.submitted.text = items[p1].submitted.toString()+"개의 문제가 더 있어요"
         p0.likes.text = "+"+ items[p1].likes
@@ -45,6 +53,7 @@ class QuestListAdapter(var items:ArrayList<Quest>, val context: Context): Recycl
         var solved: TextView
         var submitted: TextView
         var likes: TextView
+        var background:LinearLayout
         init{
             img = itemView.findViewById(R.id.qi_img)
             title = itemView.findViewById(R.id.qi_title)
@@ -52,6 +61,7 @@ class QuestListAdapter(var items:ArrayList<Quest>, val context: Context): Recycl
             solved = itemView.findViewById(R.id.qi_solved)
             submitted = itemView.findViewById(R.id.qi_submitted)
             likes = itemView.findViewById(R.id.qi_likes)
+            background = itemView.findViewById(R.id.isSolvedColor)
             itemView.setOnClickListener{
                 val position = adapterPosition
                 itemClickListener?.OnItemClick(this,items[position],position)

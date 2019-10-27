@@ -1,11 +1,13 @@
 package safari.com.iltall.UI.Quest
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.widget.Toast
 import safari.com.iltall.Data.Adapter.QuestListAdapter
 import safari.com.iltall.Data.Dataclass.Quest
 import safari.com.iltall.R
@@ -14,6 +16,8 @@ class QuestListActivity : AppCompatActivity() {
     lateinit var questList:ArrayList<Quest>
     lateinit var adapter: QuestListAdapter
     lateinit var rView: RecyclerView
+    var CORRECT = 9999
+    var index = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quest_list)
@@ -54,12 +58,22 @@ class QuestListActivity : AppCompatActivity() {
 //                val builder = AlertDialog.Builder(this@QuestListActivity) //alert 다이얼로그 builder 이용해서 다이얼로그 생성
 //                val questDialog = layoutInflater.inflate(R.layout.dialog_quest_list, null)
 //                builder.setView(questDialog)
-
+                index = position
                 val nextIntent = Intent(this@QuestListActivity, QuestActivity::class.java)
                 nextIntent.putExtra("PLAY",data)
-                startActivity(nextIntent)
+                startActivityForResult(nextIntent,CORRECT)
             }
 
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == CORRECT && resultCode == Activity.RESULT_OK){
+            Toast.makeText(this,index.toString(),Toast.LENGTH_SHORT).show()
+            questList[index].isSolved = true
+            adapter = QuestListAdapter(questList,this)
+            rView.adapter = adapter
         }
     }
 }

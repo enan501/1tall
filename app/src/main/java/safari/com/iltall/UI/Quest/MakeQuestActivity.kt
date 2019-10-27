@@ -20,8 +20,7 @@ import safari.com.iltall.Data.Adapter.CenterZoomLayoutManager
 import safari.com.iltall.Data.Adapter.QuestContentAdapter
 import safari.com.iltall.Data.Dataclass.QuestContent
 import java.io.File
-
-
+import java.net.URL
 
 
 class MakeQuestActivity : AppCompatActivity() {
@@ -160,7 +159,7 @@ class MakeQuestActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
             if (requestCode == SELECT_IMAGE) {
                 if (resultCode == Activity.RESULT_OK) {
-                    contentList[curPos].img = getPathFromUri(data!!.data)
+                    contentList[curPos].img = getPathFromUri(data!!.data!!)
                     adapter.notifyDataSetChanged()
                     mq_rView.adapter = adapter
                     layoutManager.scrollToPosition(curPos)

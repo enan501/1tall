@@ -1,5 +1,7 @@
 package safari.com.iltall.UI.Quest
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v7.app.AppCompatActivity
@@ -48,6 +50,8 @@ class QuestActivity : AppCompatActivity() {
             var mA = qt_answer.text.toString()
             if(quest.answer == mA){
                 Toast.makeText(this,"정답입니다",Toast.LENGTH_SHORT).show()
+                var intent = Intent()
+                setResult(RESULT_OK,intent)
                 finish()
             }
         }

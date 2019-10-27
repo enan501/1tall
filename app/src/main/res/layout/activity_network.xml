@@ -54,7 +54,7 @@
                 app:tabIndicatorColor="@null"
                 app:tabMode="fixed"
                 app:tabSelectedTextColor="#ECBBBB"
-               android:paddingBottom="30dp"
+               android:paddingBottom="20dp"
                 app:tabTextAppearance="@style/tab_text"
                 app:tabTextColor="#ffffff"></android.support.design.widget.TabLayout>
         <LinearLayout

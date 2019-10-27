@@ -2,5 +2,6 @@ package safari.com.iltall.Data.Dataclass
 
 import android.net.Uri
 import java.io.Serializable
+import java.net.URL
 
-data class QuestContent(var text:String, var img: String, var isAddLast:Int) :Serializable
+data class User(var name:String, var image: String):Serializable

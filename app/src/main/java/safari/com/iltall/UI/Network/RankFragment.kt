@@ -39,11 +39,11 @@ class RankFragment : Fragment() {
     }
     fun initData(){
         followList = arrayListOf()
-        followList.add(Follow("","sejeong",100,30,"견습 탐정",15,130,127,1, arrayListOf(
-            Title("견습 탐정",""), Title("묻고 더블로가!",""), Title( "숙련된 탐정", ""),
-            Title("스핑크스",""), Title("바보","")
+        followList.add(Follow("android.resource://safari.com.iltall/drawable/profile","sejeong",100,30,"견습 탐정",15,130,127,1, arrayListOf(
+            Title("견습 탐정","android.resource://safari.com.iltall/drawable/bronze"), Title("묻고 더블로가!","android.resource://safari.com.iltall/drawable/gold"), Title( "숙련된 탐정", "android.resource://safari.com.iltall/drawable/bronze"),
+            Title("스핑크스","android.resource://safari.com.iltall/drawable/gold"), Title("바보","android.resource://safari.com.iltall/drawable/silver")
         )))
-        followList.add(Follow("","han2258",15,20, "건잘알", 55, 520, 180, 2, arrayListOf(Title("건잘알",""), Title( "행운의 탐정", ""), Title("고양이 매니아",""))))
+        followList.add(Follow("android.resource://safari.com.iltall/drawable/profile","han2258",15,20, "건잘알", 55, 520, 180, 2, arrayListOf(Title("건잘알","android.resource://safari.com.iltall/drawable/silver"), Title( "행운의 탐정", "android.resource://safari.com.iltall/drawable/bronze"), Title("고양이 매니아","android.resource://safari.com.iltall/drawable/bronze"))))
     }
     fun initLayout(){
         val layoutManager = LinearLayoutManager(activity!!, LinearLayoutManager.VERTICAL, false)

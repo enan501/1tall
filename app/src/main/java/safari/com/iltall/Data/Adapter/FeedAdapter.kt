@@ -1,6 +1,7 @@
 package safari.com.iltall.Data.Adapter
 
 import android.content.Context
+import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +24,7 @@ class FeedAdapter(var items:ArrayList<Feed>, val context: Context): RecyclerView
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         p0.title.text = items[p1].title
         p0.content.text = items[p1].content
-
+        p0.img.setImageURI(Uri.parse("android.resource://safari.com.iltall/drawable/profile"))
     }
     interface OnItemClickListener{
         fun OnItemClick(holder:ViewHolder, data: Feed, position: Int)

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.PopupMenu
+import android.widget.PopupWindow
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_status.*
 import safari.com.iltall.Data.Adapter.TitleAdapter
@@ -40,10 +41,12 @@ class StatusActivity : AppCompatActivity() {
         if(status.img.isNotEmpty())
             st_img.setImageBitmap(BitmapFactory.decodeFile(status.img))
         st_nickname.text = status.id
-        st_follower.text = status.follower.toString()
-        st_following.text = status.following.toString()
+        st_follower.text = "팔로워 "+status.follower.toString()+" | "
+        st_following.text = "팔로잉 "+status.following.toString()
+        /*
         st_gave.text = "낸 문제 : " + status.gave + "개"
         st_solved.text = "푼 문제 : " + status.solved +"개"
+         */
     }
     fun initListener(){
         st_menu.setOnClickListener {

@@ -19,7 +19,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
-            android:networkSecurityConfig="@xml/network_security_config">
+            android:networkSecurityConfig="@xml/network_security_config"
+            >
         <provider
                 android:name="android.support.v4.content.FileProvider"
                 android:authorities="safari.com.iltall.provider"
@@ -30,12 +31,14 @@
                     android:resource="@xml/filepaths" />
         </provider>
         <activity android:name=".UI.StatusActivity"/>
-        <activity android:name=".UI.Quest.QuestActivity">
+        <activity android:name=".UI.Quest.QuestActivity"
+                android:windowSoftInputMode="stateHidden">
 
         </activity>
 
         <activity android:name=".UI.Quest.QuestListActivity"></activity>
-        <activity android:name=".UI.Quest.MakeQuestActivity"/>
+        <activity android:name=".UI.Quest.MakeQuestActivity"
+                android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".UI.JoinActivity" />
         <activity android:name=".UI.LoginActivity"></activity>
         <activity android:name=".UI.Radar.RadarActivity" >

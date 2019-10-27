@@ -1,6 +1,7 @@
 package safari.com.iltall.Data.Adapter
 
 import android.content.Context
+import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -25,9 +26,10 @@ class FollowAdapter(var items:ArrayList<Follow>, val context: Context, var isRan
             p0.rank.visibility = View.VISIBLE
             p0.rank.text = items[p1].rank.toString() + "위"
         }
+        p0.img.setImageURI(Uri.parse(items[p1].img))
         p0.id.text = items[p1].id
-        p0.solved.text = "푼 문제 : " + items[p1].solved.toString()
-        p0.submitted.text = "낸 문제 : " + items[p1].gave.toString()
+        p0.solved.text =  items[p1].solved.toString()+"개의 문제를 풀었습니다"
+        p0.submitted.text = ""
 
     }
     interface OnItemClickListener{

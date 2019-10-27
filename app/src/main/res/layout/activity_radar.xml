@@ -31,7 +31,8 @@
                 <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/map_view" />
+                        android:id="@+id/map_view"
+                        android:background="#000000"/>
                 <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -55,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="@drawable/main"></ImageView>
+            android:src="@drawable/mainframe"></ImageView>
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -68,6 +69,43 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="0.6"
+                android:id="@+id/hideLayer"
+                android:visibility="visible"
+                android:gravity="center">
+
+
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:id="@+id/quiz_put"
+                    android:enabled="true"
+                    android:fontFamily="@font/dunggeunmo"
+                    android:background="@null"
+                    android:textColor="#ffffff"
+                    android:src="@drawable/savebtn"
+                    android:layout_margin="10dp"
+                    android:text="담기"></ImageButton>
+
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/quiz_solve"
+                    android:scaleType="fitCenter"
+                    android:enabled="true"
+                    android:fontFamily="@font/dunggeunmo"
+                    android:background="@null"
+                    android:textColor="#ffffff"
+                    android:src="@drawable/playbtn"
+                    android:layout_margin="10dp"
+                    android:text="풀기"></ImageButton>
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1.1"
                 android:orientation="horizontal">
             <LinearLayout
@@ -77,21 +115,29 @@
                 <Button
                         android:id="@+id/rd_network"
                         android:text="네트워크"
+                        android:fontFamily="@font/dunggeunmo"
+                        android:background="@null"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 <Button
                         android:id="@+id/rd_make_quest"
                         android:text="문제만들기"
+                        android:fontFamily="@font/dunggeunmo"
+                        android:background="@null"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 <Button
                         android:id="@+id/rd_solve_quest"
                         android:text="문제풀기"
+                        android:fontFamily="@font/dunggeunmo"
+                        android:background="@null"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 <Button
                         android:id="@+id/rd_status"
                         android:text="상태"
+                        android:fontFamily="@font/dunggeunmo"
+                        android:background="@null"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
             </LinearLayout>
